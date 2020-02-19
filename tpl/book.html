@@ -1,0 +1,88 @@
+
+
+{{define "book"}}
+    <html>
+
+    {{template "head"}}
+
+    <body class="mdui-theme-primary-blue">
+    <style>
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-spaces;
+        }
+    </style>
+    {{template "header"}}
+
+    <div class="mdui-container mdui-color-theme-50 mdui-m-t-5 mdui-m-b-5">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-8 mdui-color-theme-100">
+                <div class="mdui-text-center mdui-m-a-1">
+                    <p class="mdui-typo-display-1">
+                        {{.Title}}
+                    </p>
+                    <div class="mdui-typo-body-1 mdui-m-a-1">
+                        <i class="mdui-icon material-icons">update</i>{{.UpdatedAt}}
+                        <i class="mdui-icon material-icons">visibility</i>{{.Views}}
+                    </div>
+                </div>
+                <div class="mdui-divider mdui-m-a-1"></div>
+                <div class="mdui-container-fluid">
+                    <div class="mdui-col-xs-4 mdui-p-a-1">
+                        <img src="{{.ImageUrl}}" alt="" referrerpolicy="no-referrer"
+                             class="mdui-img-fluid mdui-img-rounded">
+                    </div>
+                    <div class="mdui-col-xs-6">
+                        <div class="mdui-typo mdui-m-a-2">
+                            <p><strong>书名 </strong>{{.Title}}</p>
+                            <p><strong>作者 </strong>{{.Author}}</p>
+                            <p><strong>时间 </strong>{{.PublicDate}}</p>
+                            <p><strong>出版 </strong>{{.Publisher}}</p>
+                            <p><strong>豆瓣 </strong><a class="mdui-typo" href="{{.Douban}}">链接</a></p>
+                            <p><strong>ISBN </strong>{{.Isbn}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-divider mdui-m-a-1"></div>
+                <div class="mdui-container-fluid mdui-m-a-1">
+                    <p><strong>内容介绍</strong></p>
+                    <pre>{{.Summary}}</pre>
+                </div>
+                <div class="mdui-divider mdui-m-a-1"></div>
+                <div class="mdui-container-fluid mdui-m-a-1">
+                    <p><strong>作者介绍</strong></p>
+                    <pre>{{.AuthorIntro}}</pre>
+                </div>
+                <div class="mdui-divider mdui-m-a-1"></div>
+                <div class="mdui-container-fluid mdui-m-a-1">
+                    <p><strong>目录</strong></p>
+                    <pre>{{.Catalog}}</pre>
+                </div>
+                <div class="mdui-divider mdui-m-a-1"></div>
+                <div class="mdui-row mdui-typo mdui-m-a-1 ">
+                    <div class="mdui-col-xs-6">
+                        <div class="mdui-typo-body-2-opacity">上一篇</div>
+                        <a href="{{.Prev}}" >{{.PrevName}}</a>
+                    </div>
+                    <div class="mdui-col-xs-6 mdui-text-right">
+                        <div class="mdui-typo mdui-typo-body-2-opacity">下一篇</div>
+                        <a href="{{.Next}}" >{{.NextName}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //var $$ = mdui.JQ
+        //$$.each($$("pre"),function (i,value) {
+        //    value.innerText = function (str) {
+         //      return str.replace(/\n/g,"<br>")
+          //  }(value.innerText)
+        //})
+    </script>
+
+    {{template "footer"}}
+    </body>
+    </html>
+{{end}}

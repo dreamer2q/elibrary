@@ -1,0 +1,74 @@
+{{define "index"}}
+    <html>
+
+    {{template "head"}}
+
+    <body class="mdui-theme-primary-blue">
+    {{template "header"}}
+
+    <!-- start  -->
+
+    <div class="mdui-container mdui-m-t-5 ">
+        <div class="mdui-row">
+            <div class="mdui-col-sm-12 mdui-col-md-8 mdui-col-lg-8 mdui-col-xl-8">
+
+                <div class="mdui-row-xs-4 mdui-row-md-4 mdui-row-lg-5 mdui-row-xl-5 mdui-row-sm-4">
+
+                    {{range .Books}}
+                        <article class="mdui-col mdui-typo mdui-p-a-0 mdui-m-a-2">
+                            {{if .ImageUrl}}
+                                <a href="/book/{{.ID}}"><img style="height: 200px" src="{{.ImageUrl}}" alt="{{.Title}}"
+                                                             class="mdui-img-fluid"
+                                                             referrerpolicy="no-referrer"></a>
+                            {{else}}
+                                <a href="javascript:;"><img src="img/cover.jpg" alt="nice"
+                                                            class="mdui-img-rounded mdui-img-fluid"
+                                                            referrerpolicy="no-referrer"></a>
+                            {{end}}
+                            <div class="mdui-m-a-0 mdui-p-a-0" style="overflow: hidden;white-space: nowrap;">
+                                <p class="mdui-typo-caption mdui-m-t-1 mdui-m-b-0"><i class="mdui-icon material-icons">book</i>
+                                    <a href="/book/{{.ID}}">{{.Title}}</a>
+                                </p>
+                                <p class="mdui-typo-caption-opacity"><i class="mdui-icon material-icons">person</i>
+                                    {{if .Author}}
+                                        <a href="/label/{{.Author}}">{{.Author}}</a>
+                                    {{else}}
+                                        <a href="javascript:;">None</a>
+                                    {{end}}
+                                </p>
+                            </div>
+                        </article>
+                    {{else}}
+                        <article class="mdui-col mdui-typo">
+                            <a href=""><img src="/static/img/cover.jpg" alt="" class="mdui-img-rounded"
+                                            referrerpolicy="no-referrer"></a>
+                            <div class="mdui-m-a-0">
+                                <p class="mdui-typo-title mdui-m-a-0"><i class="mdui-icon material-icons">book</i>
+                                    <a href="" class="">书籍名称</a>
+                                </p>
+                                <p class="mdui-typo-caption-opacity mdui-m-a-0"><i class="mdui-icon material-icons">person</i>
+                                    <a href="" class="">这是作者</a>
+                                </p>
+                            </div>
+                        </article>
+                    {{end}}
+                </div>
+                <div class="mdui-divider mdui-m-a-1 mdui-m-t-2"></div>
+                <div class="mdui-row mdui-typo mdui-text-center">
+                    <a href="javascript:;" class="mdui-btn">上一页</a>
+                    <a href="javascript:;" class="mdui-btn">下一页</a>
+                    <input type="text" name="" id="" class="mdui-m-t-1">
+                </div>
+            </div>
+            <div class="mdui-col-xs-10 mdui-col-lg-4 mdui-col-md-4">
+                <h1>This is a test</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <!--end -->
+    {{template "footer"}}
+    </body>
+    </html>
+{{end}}
